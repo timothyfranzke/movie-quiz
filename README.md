@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Movie Quiz
+
+A web-based daily movie quiz application built with Next.js and Tailwind CSS. This application presents users with a daily quiz featuring movies from IMDb's Top 250 list.
 
 ## Getting Started
 
@@ -16,18 +18,30 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Daily movie quiz featuring films from IMDb's Top 250 list
+- Initial clues include the movie's genre and release year
+- Six attempts to guess the correct movie title
+- Option to reveal an actor's name (counts as one attempt)
+- Responsive design with Tailwind CSS
+- State persistence across page reloads
+- Daily quiz reset
 
-## Learn More
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a custom font family.
 
-To learn more about Next.js, take a look at the following resources:
+## How It Works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Each day, a new movie is selected from IMDb's Top 250 list
+2. Users are presented with the movie's genre and release year as initial clues
+3. Users have six attempts to guess the correct movie title
+4. Users can choose to reveal an actor's name, which counts as one attempt
+5. Feedback is provided after each guess
+6. At the end of the quiz, the correct answer and movie details are revealed
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Data Source
+
+The application uses data from the IMDb Top 250 movies list, which is fetched from a JSON file that updates every six hours. The data includes the movie title, release year, genres, and main actors.
 
 ## Deploy on Vercel
 

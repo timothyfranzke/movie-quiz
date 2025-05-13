@@ -1,17 +1,28 @@
-interface Movie {
+import { mockMovieData } from './mockData';
+
+export interface Movie {
   title: string;
   year: number;
   genres: string[];
   actors: string[];
 }
 
-interface MovieData {
+export interface MovieData {
   movies: Movie[];
   lastUpdated: string;
 }
 
+// Flag to determine whether to use mock data or real API
+const USE_MOCK_DATA = true;
+
 // Function to fetch the IMDb Top 250 movies data
 export async function fetchMovieData(): Promise<MovieData> {
+  // Use mock data for development
+  if (USE_MOCK_DATA) {
+    console.log('Using mock movie data for development');
+    return mockMovieData;
+  }
+  
   try {
     // Fetch data from the provided source
     const response = await fetch('https://raw.githubusercontent.com/movie-monk-b0t/top250/main/top250.json', {
@@ -39,11 +50,9 @@ export async function fetchMovieData(): Promise<MovieData> {
     };
   } catch (error) {
     console.error('Error fetching movie data:', error);
-    // Return empty data in case of error
-    return {
-      movies: [],
-      lastUpdated: new Date().toISOString()
-    };
+    // Return mock data as fallback in case of error
+    console.log('Falling back to mock data due to error');
+    return mockMovieData;
   }
 }
 
